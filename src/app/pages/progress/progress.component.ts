@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgressComponent implements OnInit {
 
-  constructor() { }
+  progreso = 20;
+  progresoVerde = 30;
+
+  minusDisabled = false;
+  maxDisabled = false;
+  constructor() {
+
+  }
+
 
   ngOnInit(): void {
   }
+
 
 }
