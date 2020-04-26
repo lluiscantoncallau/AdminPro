@@ -26,7 +26,7 @@ export class UsuarioService {
   }
 
   loginGoogle(token: string) {
-    let url = URL_SERVICIOS + '/login/google';
+    const url = URL_SERVICIOS + '/login/google';
     return this.http.post(url, { token })
       .pipe(
         map((resp: any) => {

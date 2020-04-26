@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
   attachSingIn(element) {
     this.auth2.attachClickHandler(element, {}, (googleUser) => {
-      let token = googleUser.getAuthResponse().id_token;
+      const token = googleUser.getAuthResponse().id_token;
       this.usuarioService.loginGoogle(token)
         .subscribe((resp: any) => this.router.navigate(['/dashboard']));
     });

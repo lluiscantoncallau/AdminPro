@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   forma: FormGroup;
 
   constructor(public usuarioService: UsuarioService,
-     public router: Router) { }
+              public router: Router) { }
 
   ngOnInit(): void {
     init_plugins();
@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    let usuario = new Usuario(this.forma.value.nombre, this.forma.value.email, this.forma.value.clave);
+    const usuario = new Usuario(this.forma.value.nombre, this.forma.value.email, this.forma.value.clave);
     this.usuarioService.crearUsuario(usuario)
       .subscribe(resp =>  this.router.navigate(['/login']));
 
