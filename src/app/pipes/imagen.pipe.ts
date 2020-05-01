@@ -7,16 +7,14 @@ import { URL_SERVICIOS } from '../config/config';
 export class ImagenPipe implements PipeTransform {
 
   transform(img: string, tipo: string = 'usuario'): string {
-
-   
-    if (img.indexOf('https') >= 0) {    
-      return img;
-    }
-
     let url = URL_SERVICIOS + '/img';
 
     if (!img) {
-      return url + 'usuarios/noimage';
+      return url + '/usuarios/noimage';
+    }
+
+    if (img.indexOf('https') >= 0) {
+      return img;
     }
 
     switch (tipo) {
@@ -30,8 +28,7 @@ export class ImagenPipe implements PipeTransform {
         url += '/hopitales/' + img;
         break;
       default:
-        console.log('exisiste el tipo de imagen');
-        return url + 'usuarios/noimage';  
+        return url + '/usuarios/noimage';
     }
 
     return url;
