@@ -7,8 +7,9 @@ import { SettingsService } from './services/settings.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title: string;
   constructor(private settingsService: SettingsService) {
-    
-    
+    this.title = 'AdminPro';
+
   }
 }
