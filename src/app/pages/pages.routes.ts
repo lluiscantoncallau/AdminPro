@@ -6,9 +6,14 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-import { LoginGuardGuard } from '../services/guards/login-guard.guard';
+import { LoginGuardGuard } from '../guards/login-guard.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
+import { MedicosComponent } from './medicos/medicos.component';
+import { MedicoComponent } from './medicos/medico.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
+import { AdminGuard } from '../guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -23,7 +28,12 @@ const routes: Routes = [
       { path: 'rxjs', component: RxjsComponent, data: { titulo: 'Reactive Extensions Library for JavaScript' } },
       { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes de usuario' } },
       { path: 'profile', component: ProfileComponent, data: { titulo: 'Perfil de usuario' } },
-      { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Gestion de usuarios' } },
+      { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador' } },
+
+      { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Gestion de usuarios' }, canActivate: [AdminGuard] },
+      { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Gestion de hospitales' } },
+      { path: 'medicos', component: MedicosComponent, data: { titulo: 'Gestion de medicos' } },
+      { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Gestion del medico' } },
       { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
     ]
   },

@@ -8,7 +8,7 @@ export class ImagenPipe implements PipeTransform {
 
   transform(img: string, tipo: string = 'usuario'): string {
     let url = URL_SERVICIOS + '/img';
-
+   
     if (!img) {
       return url + '/usuarios/noimage';
     }
@@ -25,12 +25,12 @@ export class ImagenPipe implements PipeTransform {
         url += '/medicos/' + img;
         break;
       case 'hospital':
-        url += '/hopitales/' + img;
+        url += '/hospitales/' + img;
         break;
       default:
         return url + '/usuarios/noimage';
     }
-
+   
     return url;
   }
 

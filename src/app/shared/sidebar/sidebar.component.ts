@@ -13,6 +13,7 @@ export class SidebarComponent implements OnInit {
   constructor(public service: SidebarService, public usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
+    this.service.cargarMenu();
   }
 
 }
