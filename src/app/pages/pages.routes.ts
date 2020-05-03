@@ -14,29 +14,24 @@ import { MedicosComponent } from './medicos/medicos.component';
 import { MedicoComponent } from './medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { AdminGuard } from '../guards/admin.guard';
+import { VerificatokenGuard } from '../guards/verificatoken.guard';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: PagesComponent,
-    canActivate: [LoginGuardGuard],
-    children: [
-      { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
-      { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' }},
-      { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas de tarta' } },
-      { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
-      { path: 'rxjs', component: RxjsComponent, data: { titulo: 'Reactive Extensions Library for JavaScript' } },
-      { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes de usuario' } },
-      { path: 'profile', component: ProfileComponent, data: { titulo: 'Perfil de usuario' } },
-      { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador' } },
 
-      { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Gestion de usuarios' }, canActivate: [AdminGuard] },
-      { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Gestion de hospitales' } },
-      { path: 'medicos', component: MedicosComponent, data: { titulo: 'Gestion de medicos' } },
-      { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Gestion del medico' } },
-      { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
-    ]
-  },
+  { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' }, canActivate: [VerificatokenGuard] },
+  { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
+  { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas de tarta' } },
+  { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
+  { path: 'rxjs', component: RxjsComponent, data: { titulo: 'Reactive Extensions Library for JavaScript' } },
+  { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes de usuario' } },
+  { path: 'profile', component: ProfileComponent, data: { titulo: 'Perfil de usuario' } },
+  { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador' } },
+
+  { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Gestion de usuarios' }, canActivate: [AdminGuard] },
+  { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Gestion de hospitales' } },
+  { path: 'medicos', component: MedicosComponent, data: { titulo: 'Gestion de medicos' } },
+  { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Gestion del medico' } },
+  { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
 ];
 
 export const PAGES_ROUTES = RouterModule.forChild(routes);

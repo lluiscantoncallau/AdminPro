@@ -52,7 +52,7 @@ export class UsuarioService {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.usuario = JSON.parse(localStorage.getItem('usuario'));
-      this.menu = JSON.parse(localStorage.getItem('menu'));     
+      this.menu = JSON.parse(localStorage.getItem('menu'));
     } else {
       this.token = '';
       this.usuario = null;
@@ -99,6 +99,18 @@ export class UsuarioService {
       );
   }
 
+  renuevaToken() {
+    const url = `${URL_SERVICIOS}/login/renuevatoken?token=${this.token}`;
+    return this.http.get(url)
+      .pipe(
+        map((resp: any) => {
+          this.token = resp.token;
+          localStorage.setItem('token', this.token);
+          return resp;
+        })
+      );
+  }
+
   actualizarUsuario(usuario: Usuario) {
     const url = `${URL_SERVICIOS}/usuario/${usuario._id}?token=${this.token}`;
     return this.http.put(url, usuario)
@@ -122,7 +134,7 @@ export class UsuarioService {
         if (localStorage.getItem('email')) {
           recordar = true;
         }
-        this.guardarStorage(id, this.token, this.usuario, recordar,  resp.menu);
+        this.guardarStorage(id, this.token, this.usuario, recordar, resp.menu);
       });
   }
 
