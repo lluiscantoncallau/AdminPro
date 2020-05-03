@@ -10,13 +10,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpErrorInterceptor } from './shared/httpErrorInterceptor';
 import { PagesComponent } from './pages/pages.component';
 import { SharedModule } from './shared/shared.module';
+import { IntegracionComponent } from './testing/integracion/integracion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    PagesComponent
+    PagesComponent,
+    IntegracionComponent
   ],
   imports: [
     BrowserModule,
